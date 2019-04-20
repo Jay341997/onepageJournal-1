@@ -33,14 +33,23 @@ export class Grid extends Component {
         name : '',
         date : '',
         week : i,
-        color : ''
+        class : ''
       }
+      //adding birthday logic
       if(i%52 === 1){
-        eventbox.color = 'green'
+        eventbox.class = 'birthday'
+      }
+      else if(i<100){
+        eventbox.class = 'past'
+      }
+      else if(i===100){
+        eventbox.class = 'present'
+      }
+      else{
+        eventbox.class = 'future'
       }
       newgrid.push(eventbox)
     }
-
     this.state.events.forEach(event => {
       newgrid[event.week] = event
       console.log(newgrid)
@@ -54,7 +63,7 @@ export class Grid extends Component {
     return (
       <div className="grid-box">
       {this.state.grid.map((item) => 
-        <Eventbox key={item.week} date={item.date} color={item.color}/>
+        <Eventbox key={item.week} date={item.date} color={item.color} class={item.class}/>
       )}
       </div>
     )
@@ -66,6 +75,6 @@ export default Grid
 
 /* To-Do
 - formatting according to  1) past/future 2) birthdays
-- fetch data from DB
+- fetch data from DB [ add birthday logic to db ]
 - 
 */

@@ -3,18 +3,20 @@
   height: 19px;
   margin: 1px;
   outline: 1px solid #333333;
-  background: black
 }
-.eventbox .birthdays{
+.eventbox.birthday{
+  background: green;
+  outline-color: darkgreen;
 }
-.eventbox .past{
-
+.eventbox.past{
+  background: grey;
 }
-.eventbox .future{
-
+.eventbox.future{
+  background: whitesmoke;
 }
-.eventbox .present{
-
+.eventbox.present{
+  background: greenyellow;
+  outline : 3px solid black;
 }
 .eventbox:hover {
   z-index: 1;
