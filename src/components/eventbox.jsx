@@ -5,17 +5,17 @@ export default class Eventbox extends Component {
   constructor(props){
     super(props);
     this.state = {  
-      color : 'black'
+      name : this.props.name,
+      date : this.props.date,
+      color : this.props.color
     }
   }
   render() {
-    let styles={
-      background : this.state.color
-    }
     return (
       <div 
         className="eventbox" 
-        style={styles}
+        title = {this.state.name}
+        style={{background:this.state.color}}
       />
     )
   }
