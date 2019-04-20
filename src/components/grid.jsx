@@ -37,16 +37,17 @@ export class Grid extends Component {
       }
       //adding birthday logic
       if(i%52 === 1){
-        eventbox.class = 'birthday'
+        eventbox.class += 'birthday '
+        eventbox.name += "It's your "+ i + " birthday" 
       }
-      else if(i<100){
-        eventbox.class = 'past'
+      if(i<2000){
+        eventbox.class += 'past '
       }
-      else if(i===100){
-        eventbox.class = 'present'
+      else if(i===2000){
+        eventbox.class += 'present '
       }
       else{
-        eventbox.class = 'future'
+        eventbox.class += 'future '
       }
       newgrid.push(eventbox)
     }

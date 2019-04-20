@@ -2,21 +2,19 @@
   width: 19px;
   height: 19px;
   margin: 1px;
-  outline: 1px solid #333333;
 }
 .eventbox.birthday{
-  background: green;
-  outline-color: darkgreen;
+  outline: 1px dashed green;
 }
 .eventbox.past{
-  background: grey;
+  background: #eeffee;
 }
 .eventbox.future{
-  background: whitesmoke;
+  background: white;
 }
 .eventbox.present{
   background: greenyellow;
-  outline : 3px solid black;
+  outline : 2px solid green;
 }
 .eventbox:hover {
   z-index: 1;
