@@ -2,7 +2,8 @@
   width: 19px;
   height: 19px;
   margin: 1px;
-  outline: 1px solid #333333
+  outline: 1px solid #333333;
+  background: black
 }
 .eventbox .birthdays{
 }
