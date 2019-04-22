@@ -8,28 +8,20 @@ export default class Eventbox extends Component {
       name : this.props.name,
       date : this.props.date,
       class : this.props.class,
-      color : this.props.color
+      color : this.props.color,
     }
   }
   render(){
-    let tempclassName = "eventbox " + this.state.class
+    let tempclassName = this.state.class + " eventbox"  
     let tempStyle
-    if(this.state.color !== ''){
-      tempStyle = {
-        background : this.state.color
-      }
+    if(this.state.name !== ''){
+      tempStyle = { background : this.state.color}
+      tempclassName += " tooltip"
     }
     return (
-      <div 
-        className= {tempclassName}
-        title = {this.state.name}
-        style = {tempStyle}
-      />
+      <div className= {tempclassName} style = {tempStyle} >
+        {this.state.name && <div className="tooltiptext">{this.state.date}:{this.state.name}</div>}
+      </div>
     )
   }
 }
-
-/* To-Do **
-- add tooltip
-- add 
-*/
