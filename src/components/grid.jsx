@@ -1,19 +1,28 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react'
 import Eventbox from './eventbox'
+import { connect } from 'react-redux';
 import './grid.css'
 
-export class Grid extends Component {
 
+const mapStateToProps = function(state){
+  return {
+    events: state,
+  }
+}
+
+export class Grid extends Component {
   constructor(props){
     super(props);
     this.state = {
-      initDate : '15.05.1998',
+      initDate : '15/05/1998',
       events : [
         {
           name : 'hello a',
-          date : '14.04.2018',
+          date : '14/04/2018',
           color : 'red' ,
-          week : 5
+          week : 5,
+          class : 'event'
         }
       ],
       grid : []
@@ -37,8 +46,13 @@ export class Grid extends Component {
       }
       //adding birthday logic
       if(i%52 === 1){
-        eventbox.class += 'birthday '
-        eventbox.name += "It's your "+ i + " birthday" 
+        eventbox.class += 'event '
+        eventbox.date += this.state.initDate+ (i-1)/52
+        if(i<=2000){
+          eventbox.name += "You became "+ (i-1)/52 + " years old" 
+        }else{
+          eventbox.name += "You will be "+ (i-1)/52 + " years old" 
+        }
       }
       if(i<2000){
         eventbox.class += 'past '
@@ -50,29 +64,28 @@ export class Grid extends Component {
         eventbox.class += 'future '
       }
       newgrid.push(eventbox)
-    }
+    }    
     this.state.events.forEach(event => {
-      newgrid[event.week] = event
-      console.log(newgrid)
-      this.setState({
-        grid : newgrid
-      });
+      newgrid[event.week-1] = event
+    });
+    this.setState({
+      grid : newgrid
     });
   }
 
   render() {
     return (
       <div className="grid-box">
-      {this.state.grid.map((item) => 
-        <Eventbox key={item.week} date={item.date} color={item.color} class={item.class}/>
+      {this.props.events.map((item) => 
+        //change to grid if local render
+        <Eventbox key={item.week} date={item.date} color={item.color} class={'event '+ item.eventclass} name={item.name}/>
       )}
       </div>
     )
   }
 }
 
-export default Grid
-
+export default connect(mapStateToProps, null)(Grid)
 
 /* To-Do
 - formatting according to  1) past/future 2) birthdays
