@@ -1,8 +1,9 @@
-export const addEvent = (name,date,color,week,eventclass) => ({
+export const addEvent = (payload) => ({
   type: 'ADD_EVENT',
-  name,
-  date,
-  color,
-  week,
-  eventclass
+  payload
+})
+
+export const createGrid = (payload) => ({
+  type : 'CREATE_GRID',
+  payload
 })
