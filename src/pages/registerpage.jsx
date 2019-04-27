@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import RegisterForm from '../components/registerform'
-import './infopage.css';
 
 class Infopage extends Component {
   constructor(props){
