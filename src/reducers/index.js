@@ -7,14 +7,12 @@ var eventId = -1 ;
 const getEventId = ( ) => {
   return ++eventId
 }
-const getLifeWeek = (birthdate , lifespan ) => {
+const getWeeks = (date,birthdate) => {
+  let newDate = new Date(date)
   let Birthdate = new Date(birthdate)
-  let Enddate = new Date(birthdate).setFullYear(Birthdate.getFullYear()+lifespan)
-  return getWeeks(Birthdate,Enddate)
-}
-const getWeeks = (date1,date2) => {
-  let weeks = (new Date(date1).getTime() - new Date(date2).getTime()) / (1000*60*60*24*7)
-  weeks = Math.round(Math.abs(weeks))
+  let weeks = (newDate.getFullYear() - Birthdate.getFullYear())*52
+  Birthdate.setFullYear(newDate.getFullYear())
+  weeks +=  Math.floor((newDate.getTime() - Birthdate.getTime())/(1000*60*60*24*7))
   return weeks
 }
 const generateBasicState = (data) => {
@@ -25,7 +23,8 @@ const generateBasicState = (data) => {
   }
   //Generating grid 
   let i;
-  let lifeWeeks = getLifeWeek(data.birthdate,data.lifespan)
+  let lifeWeeks = data.lifespan*52;
+  basicState.info.lastweek = lifeWeeks
   let currentWeek = getWeeks(Date.now(),data.birthdate)
 
   for(i=0;i<lifeWeeks;++i){
@@ -36,12 +35,16 @@ const generateBasicState = (data) => {
       tooltiptext : 'week : ' + i + ' \n',
     }
   
+    if(i==currentWeek){
+      gridbox.class += 'present '
+    }
     if(i<currentWeek){
       gridbox.class += 'past '
     }
     else if(i>currentWeek){
       gridbox.class += 'future '
     }
+    
 
     if(i%52 === 0){
       gridbox.class += 'birthday '
@@ -61,20 +64,25 @@ const events = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_EVENT':
       let newState = {...state}
-      let eventid = getEventId();
-      let weekno = getWeeks(newState.info.birthdate,action.payload.date)
-      
+      if(state === defaultState){
+        console.log('complete registration');
+        return state
+      }
+      let weekno = getWeeks(action.payload.date,newState.info.birthdate)
+      if(weekno >= state.info.lastweek || weekno < 0 ){
+        console.log('haha you cant hack me')
+        return state
+      }
       //adding event in events array
       let event = {
-        id : eventid,
+        id : getEventId(),
         name : action.payload.name,
         date : action.payload.date,
         color : action.payload.color,
         week : weekno
       } 
       newState.events.push(event);
-      console.log(weekno);
-      
+      console.log('event added', event)
       //updating gridbox based on the event 
       let gridbox = newState.grid[weekno]
       gridbox.events.push(eventId);
