@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6f5ef36ac76978418fd0",
-    "url": "/onepageJournal/static/css/main.4a3fd673.chunk.css"
+    "revision": "bd7e264201506f5fe71c",
+    "url": "/onepageJournal/static/css/main.70628105.chunk.css"
   },
   {
-    "revision": "6f5ef36ac76978418fd0",
-    "url": "/onepageJournal/static/js/main.7eb48bec.chunk.js"
+    "revision": "bd7e264201506f5fe71c",
+    "url": "/onepageJournal/static/js/main.517618cf.chunk.js"
   },
   {
     "revision": "ddb6544383b4ec6e06f7",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/onepageJournal/static/js/2.98d0f5e4.chunk.js"
   },
   {
-    "revision": "cb189d97363a6ed902384d6b4e8a38a1",
+    "revision": "05d076a6b5152920651adb65a99eddf1",
     "url": "/onepageJournal/index.html"
   }
 ];
