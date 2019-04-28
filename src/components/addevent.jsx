@@ -31,7 +31,7 @@ export class AddEvent extends Component {
   render() {
     return (
       <div >
-        <form class="add-event" onSubmit={this.handleSubmit}>
+        <form className="add-event" onSubmit={this.handleSubmit}>
             <div>
               <h3>Add event</h3>
             </div>

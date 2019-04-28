@@ -5,6 +5,7 @@ import './grid.css'
 class Grid extends Component {
     
   render() {
+    console.log('grid=rendered');
       let grid = this.props.grid.map((item,index) => {  
             return <Eventbox key={index} data={item}/>
       })
