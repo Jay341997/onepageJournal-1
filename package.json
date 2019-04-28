@@ -2,7 +2,7 @@
   "name": "onepage-journal",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dbarochiya.github.io/1page",
+  "homepage": "https://dbarochiya.github.io/onepageJournal",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
