@@ -14,20 +14,24 @@
 }
 .eventbox.present{
   background: greenyellow;
-  outline : 2px solid green;
+  border : 1px solid green;
 }
 
-.eventbox.single-event , .eventbox.birthday{
-  outline : 1px solid green;
+.eventbox.single-event{
+  border : 1px solid green;
+}
+.eventbox.birthday{
+  background: #d2e3d0;
+  border : 1px solid black;
 }
 .eventbox.multi-event {
   background-color: #cdedfd;
   background-image: linear-gradient(319deg, #cdedfd 0%, #ffec82 37%, #ffcfd2 100%);
-  outline : 1px solid green;
+  border : 1px solid green;
 }
 .eventbox:hover {
   z-index: 1;
-  outline: 1px solid green;
+  border: 1px solid green;
 }
 .eventbox.multi{
   background: black
